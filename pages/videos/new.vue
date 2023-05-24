@@ -44,8 +44,8 @@ async function create() {
       title: title.value,
       description: description.value,
       // labels: Object.fromEntries(Object.entries(labels).map(([id, value]) => [value.name, value.value])),
-      videoUrl: `https://${cfg.public.bucketName}.s3.${cfg.public.bucketRegion}.amazonaws.com/${files.value[0].name}`,
-      captionUrl: `https://${cfg.public.bucketName}.s3.${cfg.public.bucketRegion}.amazonaws.com/${files.value[0].name}.vtt`,
+      videoUrl: `https://${cfg.public.bucketName}.s3.amazonaws.com/${files.value[0].name}`,
+      captionUrl: `https://${cfg.public.bucketName}.s3.amazonaws.com/${files.value[0].name}.vtt`,
     },
   })
   await router.push(`/videos/${id}`)
