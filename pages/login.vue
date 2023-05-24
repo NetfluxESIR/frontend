@@ -10,7 +10,11 @@ const role = ref('')
 async function login() {
   const { token } = await backend('/users/login', {
     method: 'POST',
-    body: { email: email.value, password: password.value },
+    body: {
+      email: email.value,
+      password: password.value,
+      role: role.value,
+    },
     headers: {
       'Content-Type': 'application/json',
     },
