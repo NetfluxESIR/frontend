@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "@aws-sdk/s3-request-presigner": "^3.335.0",
-    "@aws-sdk/util-format-url": "^3.329.0"
+    "@aws-sdk/util-format-url": "^3.329.0",
+    "@unocss/reset": "^0.52.4"
   }
 }

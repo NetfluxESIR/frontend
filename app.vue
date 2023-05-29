@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="netflix-page">
     <NuxtPage />
   </div>
 </template>
