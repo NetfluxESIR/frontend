@@ -30,7 +30,7 @@ const { data, error, pending } = await useAsyncData(async () => await backend(`/
         <div class="text-white">
           {{ data.description }}
         </div>
-        <video id="my-video" class="video-js text-white" controls preload="auto" height="auto" data-setup="{}" crossorigin="use-credentials">
+        <video id="my-video" class="video-js text-white" controls preload="auto" height="auto" data-setup="{}" crossorigin="anonymous">
           <source :src="data.videoUrl" type="video/mp4">
           <track :src="data.captionUrl" kind="captions" srclang="fr" label="Subtitles">
           <p class="vjs-no-js text-white">
