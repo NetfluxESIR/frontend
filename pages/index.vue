@@ -47,7 +47,6 @@ async function logout() {
         Error: {{ error }}
       </div>
       <div v-if="data2" class="netflix-video-list">
-        <h1 class="text-white text-2xl font-bold">Videos</h1>
         <div v-for="video in data2.value" :key="video.id" class="netflix-video-item">
           <div v-if="video.status === 'FINISHED'" class="netflix-video-details">
             <NuxtLink :to="`/videos/${video.id}/`" class="netflix-video-title">

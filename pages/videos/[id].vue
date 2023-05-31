@@ -6,13 +6,13 @@ const backend = useBackend()
 const route = useRoute()
 const router = useRouter()
 const videoId = route.params.id
-const { data, error, pending } = await useAsyncData(async () => await backend(`/videos/${videoId}`))
-async function retrievProcessingInformations() {
-  const { steps } = await backend(`/processing/${videoId}`)
-  data.steps = steps
-  return data
-}
-const { data: video } = await useAsyncData(retrievProcessingInformations)
+const { data, error, pending } = await useAsyncData(async () => {
+  const [video, processing] = await Promise.all([
+    backend(`/videos/${videoId}`),
+    backend(`/processing/${videoId}`),
+  ])
+  return { video, processing }
+})
 </script>
 
 <template>
@@ -29,14 +29,13 @@ const { data: video } = await useAsyncData(retrievProcessingInformations)
     <div v-if="error" class="text-white">
       Error: {{ error }}
     </div>
-    <div v-if="video">
+    <div v-if="data.video">
       <div class="mb-4 min-w-screen flex justify-center">
-        <input v-model="video.title" type="text" placeholder="Title" required="true"
-          class="bg-transparent border-b border-white text-white mb-4 placeholder-gray-400 focus:outline-none text-2xl">
+        <h1 class="text-white text-2xl">{{ data.video.title }}</h1>
         <video id="my-video" class="video-js text-white" controls preload="auto" width="896" height="auto" data-setup="{}"
           crossorigin="anonymous">
-          <source :src="video.videoUrl" type="video/mp4">
-          <track :src="video.captionUrl" kind="captions" srclang="fr" label="Subtitles">
+          <source :src="data.video.videoUrl" type="video/mp4">
+          <track :src="data.video.captionUrl" kind="captions" srclang="fr" label="Subtitles">
           <p class="vjs-no-js text-white">
             To view this video please enable JavaScript, and consider upgrading to a
             web browser that
@@ -50,12 +49,12 @@ const { data: video } = await useAsyncData(retrievProcessingInformations)
           Description:
         </div>
         <div class="text-white">
-          {{ video.description }}
+          {{ data.video.description }}
         </div>
         <div class="text-white font-bold text-xl mb-2">
-          <div v-for="step in video.steps" :key="step.name">
+          <div v-for="step in data.processing.steps" :key="step.name">
             <p v-if="step.status === 'FINISHED'" class="text-green-500">
-              {{ step.name }}: {{ step.status }}
+              {{ step.name }}: {{ step.log }}
             </p>
           </div>
         </div>
