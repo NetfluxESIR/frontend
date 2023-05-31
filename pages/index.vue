@@ -57,9 +57,6 @@ async function logout() {
               {{ video.description }}
             </div>
           </div>
-        </div>
-        <h1 class="text-white text-2xl font-bold">Processing</h1>
-        <div v-for="video in data2.value" :key="video.id" class="netflix-video-item">
           <div v-if="video.status !== 'FINISHED'" class="netflix-video-details">
             <div class="netflix-video-title">
               {{ video.title }}
@@ -77,7 +74,6 @@ async function logout() {
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <style scoped>

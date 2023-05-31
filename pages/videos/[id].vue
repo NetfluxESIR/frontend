@@ -9,7 +9,7 @@ const videoId = route.params.id
 const { data, error, pending } = await useAsyncData(async () => await backend(`/videos/${videoId}`))
 async function retrievProcessingInformations() {
   const { steps } = await backend(`/processing/${videoId}`)
-  data.value.steps = steps
+  data.steps = steps
   return data
 }
 const { data: video } = await useAsyncData(retrievProcessingInformations)
