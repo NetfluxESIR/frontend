@@ -27,7 +27,8 @@ async function logout() {
   <div class="netflix-page flex flex-col min-h-screen">
     <div class="netflix-header">
       <div class="netflix-logo">
-        <img src="https://loodibee.com/wp-content/uploads/Netflix-N-Symbol-logo.png" alt="Netflux logo" style="width: 100px; height: 100px;">
+        <img src="https://loodibee.com/wp-content/uploads/Netflix-N-Symbol-logo.png" alt="Netflux logo"
+          style="width: 100px; height: 100px;">
       </div>
       <div class="netflix-navigation">
         <NuxtLink class="netflix-nav-link" to="/videos/new/">
@@ -46,6 +47,7 @@ async function logout() {
         Error: {{ error }}
       </div>
       <div v-if="data2" class="netflix-video-list">
+        <h1 class="text-white text-2xl font-bold">Videos</h1>
         <div v-for="video in data2.value" :key="video.id" class="netflix-video-item">
           <div v-if="video.status === 'FINISHED'" class="netflix-video-details">
             <NuxtLink :to="`/videos/${video.id}/`" class="netflix-video-title">
@@ -55,7 +57,10 @@ async function logout() {
               {{ video.description }}
             </div>
           </div>
-          <div v-else class="netflix-video-details">
+        </div>
+        <h1 class="text-white text-2xl font-bold">Processing</h1>
+        <div v-for="video in data2.value" :key="video.id" class="netflix-video-item">
+          <div v-if="video.status !== 'FINISHED'" class="netflix-video-details">
             <div class="netflix-video-title">
               {{ video.title }}
             </div>

@@ -20,15 +20,6 @@ onChange((file) => {
   reader.readAsArrayBuffer(file[0])
 })
 
-/*
-function addLabel() {
-  labels[uuidv4()] = {
-    name: '',
-    value: '',
-  }
-}
-*/
-
 async function create() {
   if (!fileContent.value)
     return
@@ -38,7 +29,6 @@ async function create() {
     body: {
       title: title.value,
       description: description.value,
-      // labels: Object.fromEntries(Object.entries(labels).map(([id, value]) => [value.name, value.value])),
     },
   })
   await backend(`/videos/${id}`, {
@@ -55,7 +45,7 @@ async function create() {
     method: 'PUT',
     body: fileContent.value,
   })
-  await router.push(`/videos/${id}`)
+  await router.push('/')
 }
 </script>
 
@@ -75,12 +65,5 @@ async function create() {
       <button type="button" class="bg-red-600 text-white py-2 px-4 rounded-md shadow-md hover:bg-red-500 transition duration-300 focus:outline-none" @click="open">Choose video</button>
       <button class="bg-red-600 text-white py-2 px-4 rounded-md shadow-md hover:bg-red-500 transition duration-300 focus:outline-none" @click="create">Create</button>
     </div>
-    <!--
-    <div v-for="(value, id) in labels" :key="id" class="bg-gray-100 p-4 rounded-md shadow-md">
-      <input v-model="value.name" type="text">
-      <input v-model="value.value" type="text">
-    </div>
-    <button @click="addLabel" class="bg-red-600 text-white py-2 px-4 rounded-md shadow-md hover:bg-red-500 transition duration-300 focus:outline-none">Add label</button>
-    -->
   </div>
 </template>
