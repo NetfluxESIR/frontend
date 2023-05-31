@@ -46,7 +46,7 @@ async function create() {
     body: {
       title: title.value,
       description: description.value,
-      videoUrl: `https://${cfg.public.bucketName}.s3.${cfg.public.bucketRegion}.eu-west-3.amazonaws.com/${id}.mp4`,
+      videoUrl: `https://${cfg.public.bucketName}.s3.${cfg.public.bucketRegion}.amazonaws.com/${id}.mp4`,
       captionUrl: `https://${cfg.public.bucketName}.s3.${cfg.public.bucketRegion}.amazonaws.com/${id}.vtt`,
     },
   })
