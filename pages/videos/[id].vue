@@ -54,7 +54,7 @@ const { data, error, pending } = await useAsyncData(async () => {
         <div class="text-white font-bold text-xl mb-2">
           <div v-for="step in data.processing.steps" :key="step.name">
             <p v-if="step.status === 'FINISHED'" class="text-green-500">
-              {{ step.name }}: {{ step.log }}
+              {{ step.step }}: {{ step.log }}
             </p>
           </div>
         </div>
