@@ -74,6 +74,7 @@ async function logout() {
         </div>
       </div>
     </div>
+  </div>
 </template>
 
 <style scoped>
