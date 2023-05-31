@@ -31,7 +31,6 @@ const { data, error, pending } = await useAsyncData(async () => {
     </div>
     <div v-if="data.video">
       <div class="mb-4 min-w-screen flex justify-center">
-        <h1 class="text-white text-2xl">{{ data.video.title }}</h1>
         <video id="my-video" class="video-js text-white" controls preload="auto" width="896" height="auto" data-setup="{}"
           crossorigin="anonymous">
           <source :src="data.video.videoUrl" type="video/mp4">
@@ -45,6 +44,12 @@ const { data, error, pending } = await useAsyncData(async () => {
         </video>
       </div>
       <div class="bg-gray-800 rounded-lg shadow-lg p-4 mb-6">
+        <div class="text-white font-bold text-xl mb-2">
+          Title:
+        </div>
+        <div class="text-white">
+          {{ data.video.title }}
+        </div>
         <div class="text-white font-bold text-xl mb-2">
           Description:
         </div>
