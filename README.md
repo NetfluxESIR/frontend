@@ -13,6 +13,8 @@ among other things: it uses Nuxt.js to generate static pages.
 > the [pipeline](https://github.com/NetfluxESIR/pipeline) running to be able to use the frontend.
 
 ### Requirements
+
+- [Git](https://git-scm.com/downloads)
 - [Node.js](https://nodejs.org/en/download/)
 - [pnpm](https://pnpm.io/installation)
 - [Docker](https://docs.docker.com/get-docker/) (optional)
@@ -20,6 +22,8 @@ among other things: it uses Nuxt.js to generate static pages.
 ### Run from source
 
 ```bash
+git clone https://github.com/NetfluxESIR/frontend.git
+cd frontend
 pnpm install
 pnpm run dev
 ```
