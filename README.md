@@ -1,42 +1,32 @@
-# Nuxt 3 Minimal Starter
+# Netflux ESIR - Frontend
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+This repository contains the frontend of the Netflux ESIR project used to display videos and metadata.
 
-## Setup
+![Netflux ESIR - Frontend - Preview](images/preview.png)
 
-Make sure to install the dependencies:
+It relies on the [Netflux backend](https://github.com/NetfluxESIR/backend) to retrieve data and
+among other things: it uses Nuxt.js to generate static pages.
+
+## Install
+
+> Note that you need to have the [backend](https://github.com/NetfluxESIR/backend) and 
+> the [pipeline](https://github.com/NetfluxESIR/pipeline) running to be able to use the frontend.
+
+### Requirements
+- [Node.js](https://nodejs.org/en/download/)
+- [pnpm](https://pnpm.io/installation)
+- [Docker](https://docs.docker.com/get-docker/) (optional)
+
+### Run from source
 
 ```bash
-# yarn
-yarn install
-
-# npm
-npm install
-
-# pnpm
 pnpm install
+pnpm run dev
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`
+### Run with Docker
 
 ```bash
-npm run dev
+docker run -p 3000:3000 ghcr.io/netfluxesir/frontend:latest
 ```
 
-## Production
-
-Build the application for production:
-
-```bash
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
