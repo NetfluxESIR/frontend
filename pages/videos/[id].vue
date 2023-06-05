@@ -20,8 +20,10 @@ const { data, error, pending } = await useAsyncData(async () => {
     <div class="justify-left">
       <button
         class="bg-red-600 text-white py-2 px-4 rounded-md shadow-md hover:bg-red-500 transition duration-300 focus:outline-none"
-        @click="router.push('/')">
-        Back</button>
+        @click="router.push('/')"
+      >
+        Back
+      </button>
     </div>
     <div v-if="pending" class="text-white">
       Loading...
@@ -31,8 +33,10 @@ const { data, error, pending } = await useAsyncData(async () => {
     </div>
     <div v-if="data.video">
       <div class="mb-4 min-w-screen flex justify-center">
-        <video id="my-video" class="video-js text-white" controls preload="auto" width="896" height="auto" data-setup="{}"
-          crossorigin="anonymous">
+        <video
+          id="my-video" class="video-js text-white" controls preload="auto" width="896" height="auto" data-setup="{}"
+          crossorigin="anonymous"
+        >
           <source :src="data.video.videoUrl" type="video/mp4">
           <track :src="data.video.captionUrl" kind="captions" srclang="fr" label="Subtitles">
           <p class="vjs-no-js text-white">
@@ -56,10 +60,12 @@ const { data, error, pending } = await useAsyncData(async () => {
         <div class="text-white">
           {{ data.video.description }}
         </div>
+      </div>
+      <div class="bg-gray-800 rounded-lg shadow-lg p-4 mb-6">
         <div class="text-white font-bold text-xl mb-2">
           <div v-for="step in data.processing.steps" :key="step.name">
-            <p v-if="step.status === 'FINISHED'" class="text-green-500">
-              {{ step.step }}: {{ step.log }}
+            <p v-if="step.status === 'FINISHED'">
+              {{ step.step }}: <pre>{{ step.log }}</pre>
             </p>
           </div>
         </div>
